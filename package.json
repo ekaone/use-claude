@@ -1,6 +1,6 @@
 {
   "name": "@ekaone/use-claude",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "React hook for talking to Claude Code CLI via Tauri IPC — for Tauri desktop apps only",
   "author": "ekaone",
   "license": "MIT",
