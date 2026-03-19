@@ -1,0 +1,89 @@
+{
+  "name": "@ekaone/use-claude",
+  "version": "0.0.1",
+  "description": "A React hook (and future framework adapters) for communicating with Claude Code CLI inside a Tauri desktop app.",
+  "author": "ekaone",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ekaone/use-claude"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "tauri",
+    "tauri-plugin",
+    "desktop",
+    "react",
+    "svelte",
+    "vue",
+    "hook",
+    "ai",
+    "agent"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/core/index.js",
+      "types": "./dist/core/index.d.ts"
+    },
+    "./react": {
+      "import": "./dist/react/useClaudeCode.js",
+      "types": "./dist/react/useClaudeCode.d.ts"
+    },
+    "./svelte": {
+      "import": "./dist/svelte/useClaudeCode.js",
+      "types": "./dist/svelte/useClaudeCode.d.ts"
+    },
+    "./vue": {
+      "import": "./dist/vue/useClaudeCode.js",
+      "types": "./dist/vue/useClaudeCode.d.ts"
+    }
+  },
+  "main": "./dist/core/index.js",
+  "types": "./dist/core/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "build:watch": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "lint": "eslint src --ext .ts,.tsx",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "pnpm run clean && pnpm run typecheck && pnpm run test && pnpm run build"
+  },
+  "devDependencies": {
+    "@tauri-apps/api": "^2.10.1",
+    "@types/node": "^25.5.0",
+    "@types/react": "^19.2.14",
+    "react": "^19.2.4",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.0"
+  },
+  "peerDependencies": {
+    "@tauri-apps/api": "^2",
+    "react": ">=18",
+    "svelte": ">=4",
+    "vue": ">=3"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "svelte": {
+      "optional": true
+    },
+    "vue": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
