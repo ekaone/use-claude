@@ -2,8 +2,12 @@
  * StateManager, patch/notify/apply
  */
 
-import type { CLIMessage, ClaudeStatus, UseClaudeCodeOptions } from "./types";
-import { extractText, type ClaudeEvent } from "./parser";
+import type {
+  CLIMessage,
+  ClaudeStatus,
+  UseClaudeCodeOptions,
+} from "./types.js";
+import { extractText, type ClaudeEvent } from "./parser.js";
 
 // ─── State shape ──────────────────────────────────────────────────────────────
 

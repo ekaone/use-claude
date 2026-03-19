@@ -1,7 +1,10 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { ClaudeSession } from "../core/session";
-import { type SessionState } from "../core/state";
-import type { UseClaudeCodeOptions, UseClaudeCodeReturn } from "../core/types";
+import { ClaudeSession } from "../core/session.js";
+import { type SessionState } from "../core/state.js";
+import type {
+  UseClaudeCodeOptions,
+  UseClaudeCodeReturn,
+} from "../core/types.js";
 
 export function useClaudeCode(
   opts: UseClaudeCodeOptions = {},

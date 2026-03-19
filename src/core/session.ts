@@ -4,9 +4,9 @@
 
 import { invoke } from "@tauri-apps/api/core";
 import { listen, type UnlistenFn } from "@tauri-apps/api/event";
-import { parseNDJSON } from "./parser";
-import { StateManager, type SessionState } from "./state";
-import type { UseClaudeCodeOptions } from "./types";
+import { parseNDJSON } from "./parser.js";
+import { StateManager, type SessionState } from "./state.js";
+import type { UseClaudeCodeOptions } from "./types.js";
 
 // ─── ClaudeSession ────────────────────────────────────────────────────────────
 // Single responsibility: manage the Tauri IPC lifecycle for one chat session.

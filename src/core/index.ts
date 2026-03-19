@@ -8,21 +8,21 @@ export type {
   ClaudeStatus,
   UseClaudeCodeOptions,
   UseClaudeCodeReturn,
-} from "./types";
+} from "./types.js";
 
 // parser — NDJSON event types + pure parse fn
-export { parseNDJSON, extractText } from "./parser";
+export { parseNDJSON, extractText } from "./parser.js";
 export type {
   ClaudeEvent,
   SystemInitEvent,
   StreamEvent,
   AssistantEvent,
   ResultEvent,
-} from "./parser";
+} from "./parser.js";
 
 // state — SessionState shape + StateManager
-export { StateManager } from "./state";
-export type { SessionState } from "./state";
+export { StateManager } from "./state.js";
+export type { SessionState } from "./state.js";
 
 // session — Tauri IPC orchestration
-export { ClaudeSession } from "./session";
+export { ClaudeSession } from "./session.js";
