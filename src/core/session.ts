@@ -24,10 +24,15 @@ export class ClaudeSession {
 
   constructor(opts: UseClaudeCodeOptions = {}) {
     this.opts = opts;
-    this.sm = new StateManager({
-      onFinish: opts.onFinish,
-      onError: opts.onError,
-    });
+
+    // Build StateManager opts explicitly — only include callbacks that exist.
+    // Required by exactOptionalPropertyTypes: passing `undefined` into an
+    // optional property is a type error under this strict mode.
+    const smOpts: Pick<UseClaudeCodeOptions, "onFinish" | "onError"> = {};
+    if (opts.onFinish !== undefined) smOpts.onFinish = opts.onFinish;
+    if (opts.onError !== undefined) smOpts.onError = opts.onError;
+
+    this.sm = new StateManager(smOpts);
   }
 
   // ── Subscribe to state changes (used by framework adapters) ──────────────
@@ -58,7 +63,6 @@ export class ClaudeSession {
     });
 
     const unlistenDone = await listen<string>("claude-done", () => {
-      // Rust signals it has finished writing — clean up this turn's listeners
       unlisten();
       unlistenDone();
     });

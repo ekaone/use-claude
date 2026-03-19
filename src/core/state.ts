@@ -1,7 +1,3 @@
-/**
- * StateManager, patch/notify/apply
- */
-
 import type {
   CLIMessage,
   ClaudeStatus,
@@ -120,10 +116,13 @@ export class StateManager {
     if (event.type === "result") {
       if (event.subtype === "success") {
         this.patch({ status: "idle" });
-        this.opts.onFinish?.({
+        const finishArg: { messages: CLIMessage[]; cost?: number } = {
           messages: this.state.messages,
-          cost: event.total_cost_usd,
-        });
+        };
+        if (event.total_cost_usd !== undefined) {
+          finishArg.cost = event.total_cost_usd;
+        }
+        this.opts.onFinish?.(finishArg);
       } else {
         this.setError(event.subtype);
       }
